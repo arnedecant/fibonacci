@@ -1,25 +1,33 @@
-﻿/// <reference path="jquery.js" />
+﻿document.addEventListener("DOMContentLoaded", function(event) { 
+    let form = document.querySelector('form.fibonacci'),
+        result = document.querySelector('section.result');
 
-$(document).ready(function () {
-    var btn = $("#generate");
-    var result = $("#result");
+    initFibonacci(form, result);
+});
 
-    btn.click(function () {
-        var eind = $("#getal").val();
-        result.append("<ul>");
+function initFibonacci(form, result) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
 
-        var first = 0;
-        var second = 1; 
-        var current = 0 ;
+        let count = document.querySelector('form.fibonacci input.count').value;
+        let html = '<ul>';
 
-        for (var i = 0; i < eind; i++) {
-            result.append("<li>" + current + "</li>");
+        let first = 0,
+            second = 1,
+            current = 0;
+
+        for (let i = 0; i < count; i++) {
+            html += '<li>' + current + '</li>';
 
             current = first + second;
             second = first;
             first = current;
         }
-        result.append("</ul>");
-    });
 
-});
+        html += '</ul>';
+        result.innerHTML += html;
+        document.body.classList.add("submitted");
+
+    });
+}
