@@ -7,10 +7,12 @@
 
 function initFibonacci(form, result) {
     let input = document.querySelector('form.fibonacci input.count');
+
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         e.stopPropagation();
 
+        let sequence = [];
         let count = input.value;
         let html = '<ul>';
 
@@ -19,6 +21,8 @@ function initFibonacci(form, result) {
             current = 0;
 
         for (let i = 0; i < count; i++) {
+            sequence.push(current);
+
             if (isFinite(current)) {
                 html += '<li>' + current + '</li>';
             } else {
@@ -34,10 +38,16 @@ function initFibonacci(form, result) {
         html += '</ul>';
         result.innerHTML += html;
         document.body.classList.add("submitted");
+
+        initFibonacciCanvas(sequence);
     });
 
     input.addEventListener('keydown', function(e) {
         document.body.classList.remove("submitted");
         result.innerHTML = '';
     });
+}
+
+function initFibonacciCanvas(sequence) {
+    
 }
