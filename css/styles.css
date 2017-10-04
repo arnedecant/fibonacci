@@ -1,5 +1,5 @@
 ﻿:root {
-	--img-background: url('../img/fractal2.jpg');
+	--img-background: url('../img/alchemy.gif');
 	--font-primary: 'Amatic SC', cursive;
 	--font-secondary: 'Open Sans', sans-serif;
 	
@@ -18,11 +18,19 @@
 	box-sizing: border-box;
 }
 
+input {
+	font-weight: 300;
+}
+
+input[type="number"] {
+    -moz-appearance:textfield;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    margin: 0; /* <-- Apparently some margins are still there even though it's hidden */
 }
 
 body {
@@ -43,19 +51,19 @@ body, .background {
 }
 
 .background {
-	position: absolute;
+	position: fixed;
 	background-image: var(--img-background);
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
-	opacity: 0;
+	/*background-size: cover;*/
+	/*background-position: center center;*/
+	/*background-repeat: no-repeat;*/
+	opacity: 0.15;
 	z-index: -1;
 	transition: all 200ms ease;
 	/*display: none;*/
 }
 
 body.submitted .background {
-	opacity: 0.05;
+	/*opacity: 0.05;*/
 }
 
 h1 {
@@ -157,7 +165,7 @@ ul {
 
 li {
 	display: inline-block;
-	background-color: transparent;
+	background-color: var(--color-default);
 	border: 1px solid var(--color-tertiary);
 	margin: 5px 5px 0 5px;
 	padding: 5px;
